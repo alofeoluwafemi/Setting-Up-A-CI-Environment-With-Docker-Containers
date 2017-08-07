@@ -36,7 +36,21 @@ docker run --name=gerrit -d -v /docker/gerrit:/var/gerrit/review_site -p 9099:80
 //SonarQube
 docker run -d --name sonarqube -p 9097:9000 -p 9092:9092 sonarqube
 
-//Phabricator
-//Mysql Container For Phabricator
-docker run --name=mysql-phabricator -d --volume=/docker_container/mysql-phabricator:/var/lib/mysql yesnault/docker-phabricator-mysql:latest
+//Installing Phabricator
+//Option I (No mounting of volume)
+docker run --name=mysql-phabricator yesnault/docker-phabricator-mysql:latest
+docker run --name=phabricator-container -p 9097:80 --link mysql-phabricator:database  -d yesnault/docker-phabricator:latest 
+
+//Option II (Mount Volume)
+docker run --name=mysql-phabricator --env='MYSQL_ROOT_PASSWORD=mysql-phabricator-password' -d mysql:5.7
+
+//Run command: docker inspect mysql-phabricator
+//Grab the ip address and replace it in MYSQL_HOST option
+docker run --name=phabricator-container --rm -p 8081:80  --env PHABRICATOR_HOST=192.168.1.254:8081 --env MYSQL_HOST=172.17.0.11 --env MYSQL_USER=root --env MYSQL_PASS=mysql-phabricator-password --env PHABRICATOR_REPOSITORY_PATH=/repos -v /docker_containers:/repos redpointgames/phabricator
+
+//Run: docker exec -it phabricator-container bash
+//You would be right in the container
+//working directory should be /opt 
+//cd into phabricator directory
+//Run ./bin/config set phabricator.base-uri 'http://192.168.1.8/'
 ```
