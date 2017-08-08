@@ -51,8 +51,8 @@ docker run --name=mysql-phabricator --env='MYSQL_ROOT_PASSWORD=mysql-phabricator
 docker run --name=phabricator-container --rm -p 8081:80  --env PHABRICATOR_HOST={machine-host}:{port_to_serve_phabricator} --env MYSQL_HOST={mysql_container_host} --env MYSQL_USER=root --env MYSQL_PASS=mysql-phabricator-password --env PHABRICATOR_REPOSITORY_PATH=/repos -v /docker_containers:/repos redpointgames/phabricator
 
 //Run: docker exec -it phabricator-container bash
-//You would be right in the container
-//run /srv/phabricator/phabricator/bin/config  set phabricator.base-uri 'http://{machine-host}:{port_to_serve_phabricator}/
+//You would be right in the container run
+//$ /srv/phabricator/phabricator/bin/config  set phabricator.base-uri 'http://{machine-host}:{port_to_serve_phabricator}/
 //If config file does'nt exist run
 //$ find . -name config
 //Above command should help you with locating file
