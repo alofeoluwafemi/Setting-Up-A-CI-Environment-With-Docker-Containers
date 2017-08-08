@@ -18,7 +18,8 @@ docker run --name=mysql-redmine -d --env='DB_NAME=redmine_production' --env='DB_
 docker run --name=redmine -d --link=mysql-redmine:mysql --publish=9091:80 --env='REDMINE_PORT=9091' --volume=/docker/redmine/redmine:/home/redmine/data sameersbn/redmine:3.2.5-1
 
 //Setup With SMTP
-docker run --name=redmine -d --link=mysql-redmine:mysql --publish=9091:80 --env='REDMINE_PORT=9091' --env='SMTP_AUTHENTICATION=:login' --env='SMTP_TLS=false' --env='SMTP_METHOD=smtp' --env='SMTP_PASS=proteux123' --env='SMTP_USER=redmine@proteuxtechnologies.net' --env='SMTP_PORT=587' --env='SMTP_HOST=a2plcpnl0360.prod.iad2.secureserver.net' --env='SMTP_DOMAIN=proteuxtechnologies.net' --volume=/docker/redmine/redmine:/home/redmine/data sameersbn/redmine:3.2.5-1 app:backup:create
+//Replace env values with correct ones
+docker run --name=redmine -d --link=mysql-redmine:mysql --publish=9091:80 --env='REDMINE_PORT=9091' --env='SMTP_AUTHENTICATION=:login' --env='SMTP_TLS=false' --env='SMTP_METHOD=smtp' --env='SMTP_PASS=passowrd' --env='SMTP_USER=domain@host.net' --env='SMTP_PORT=587' --env='SMTP_HOST=host.smtp.net' --env='SMTP_DOMAIN=domain.net' --volume=/docker/redmine/redmine:/home/redmine/data sameersbn/redmine:3.2.5-1 app:backup:create
 
 docker run --name=gitlab -d --publish9095:80  docker.io/store/gitlab/gitlab-ee:8.14.0-ee.0
 
