@@ -1,7 +1,7 @@
 # Setting-Up-A-CI-Environment-With-Docker-Containers
 Setting Up Gitlab, Redmine, MySQL , Sonarqube, Phabricator &amp; Gerrit  Containers
 
-> To Follow This Steps Have The Latest Docker Installed On Your Machine
+> To Follow This Steps Have The Latest Docker Installed On Your Machine  
 > Am Using Version: Docker version 1.12.6, build 3a094bd/1.12.6
 ```
 //https://github.com/sameersbn @repository for docker images
