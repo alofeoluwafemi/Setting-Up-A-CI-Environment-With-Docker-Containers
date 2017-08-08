@@ -52,7 +52,11 @@ docker run --name=phabricator-container --rm -p 8081:80  --env PHABRICATOR_HOST=
 
 //Run: docker exec -it phabricator-container bash
 //You would be right in the container
-//working directory should be /opt 
-//cd into phabricator directory
-//Run ./bin/config set phabricator.base-uri 'http://{machine-host}:{port_to_serve_phabricator}/'
+//run /srv/phabricator/phabricator/bin/config  set phabricator.base-uri 'http://{machine-host}:{port_to_serve_phabricator}/
+//If config file does'nt exist run
+//$ find . -name config
+//Above command should help you with locating file
+//Run /srv/phabricator/phabricator/bin/config set <key> <value>
+//For other Options ex. ./srv/phabricator/phabricator/bin/config  set phpmailer.smtp-host demo.smtp.com
+
 ```
